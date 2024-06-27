@@ -53,6 +53,5 @@
   </script>
   
   <style scoped>
-  /* Add additional styles here if needed */
   </style>
   

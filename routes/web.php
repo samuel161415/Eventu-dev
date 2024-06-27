@@ -15,46 +15,16 @@ use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\BusinessProfileController;
 use App\Http\Controllers\GeneralPageController;
 
-
-// Route::get('/', function () {
-//     // return Inertia::render('Welcome', [
-//     //     'canLogin' => Route::has('login'),
-//     //     'canRegister' => Route::has('register'),
-//     //     'laravelVersion' => Application::VERSION,
-//     //     'phpVersion' => PHP_VERSION,
-//     // ]);
-//     return Inertia::render('frontend/pages/Homepage');
-// });
-
-// Frontend routes
-// Route::get('/', function () {
-//     return Inertia::render('Frontend/Homepage');
-// });
 Route::get('/', [HomeController::class, 'index'])->name('home');
-// routes/web.php
-
-// In your routes/api.php
 
 Route::get('/business/{slug}/views', [ViewDataController::class, 'index']);
 
 
-Route::get('/b2b', [GeneralPageController::class, 'b2b'])->name('b2b');
 
-
-
-Route::get('/descopera', [SearchController::class, 'index']);
-Route::get('/search', [SearchController::class, 'search'])->name('search');
 Route::get('/resurse', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 Route::get('/business/{slug}', [BusinessController::class, 'profile'])->name('business.profile');
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
-});
-
-// Route::get('/dashboard', function () {
-//     return Inertia::render('Admin/Dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::put('/salon/{id}/schimba-taguri', [BusinessController::class, 'updateSalonTags']);
